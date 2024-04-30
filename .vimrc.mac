@@ -1,0 +1,176 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+
+" Rainbow parenthesis
+Plugin 'kien/rainbow_parentheses.vim'
+
+" JsBeautify
+" Plugin 'maksimr/vim-jsbeautify'
+
+" Syntastic
+" Bundle 'scrooloose/syntastic'
+
+" YouCompleteMe
+" Plugin 'Valloric/YouCompleteMe'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+
+map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
+map ,v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+
+map <c-f> :call JsBeautify()<cr>
+
+map <F1> <Esc>
+imap <F1> <Esc>
+
+:set nu
+" colorscheme distinguished
+
+set undofile                " Save undo's after file closes
+set undodir=$HOME/.vim/undo " where to save undo histories
+set undolevels=1000         " How many undos
+set undoreload=10000        " number of lines to save for undo
+
+" set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType kotlin set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
+
+" enforce unix line endings
+set fileformat=unix
+" make search case insensitive by default
+set ignorecase
+" kill trailing whitespace based on write of specified file types
+"autocmd FileType c,cpp,java,php,js autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd BufWritePre *.js :%s/\s\+$//e
+
+" no autocomments please
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+"folding settings
+"set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
+
+"syntastic
+"let g:pathogen_disabled = ['syntastic']
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_javascript_checkers = ['eslint','syntastic-checkers-c']
+"let g:syntastic_javascript_eslint_exec = 'eslint_d'
+"let g:syntastic_javascript_eslint_args = " --config /Users/rquinn/.eslintrc"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_mode_map = {'mode':'passive'}
+"nnoremap <F10> :SyntasticCheck<CR> :SyntasticToggleMode<CR> :w<CR>
+
+"ocp indent
+"set rtp+=/Users/rquinn/.vim/bundle/ocp-indent-vim
+"merlin
+"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+"execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+"jshint2 plugin
+"set runtimepath+=~/.vim/bundle/jshint2.vim/
+"let jshint2_save=1
+
+set clipboard=unnamed
+
+"ctrlp plugin
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+"rainbow parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['white',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+"let g:ycm_global_ycm_extra_conf = '/home/rquinn/.ycm_extra_conf.py'
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"vim markdown preview plugin
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+
+"vim clojure static
+syntax on
+filetype plugin indent on
+
+
+"keep vim swap files in one place
+set dir=~/.vimswaps
+
+" Protect large files from sourcing and other overhead.
+" Files become read only
+if !exists("my_auto_commands_loaded")
+ let my_auto_commands_loaded = 1
+  " Large files are > 10M
+  " Set options:
+  " eventignore+=FileType (no syntax highlighting etc
+  " assumes FileType always on)
+  " noswapfile (save copy of file)
+  " bufhidden=unload (save memory when other file is viewed)
+  " buftype=nowrite (file is read-only)
+  " undolevels=-1 (no undo possible)
+  let g:LargeFile = 1024 * 1024 * 10
+  augroup LargeFile
+    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | else | set eventignore-=FileType | endif
+    augroup END
+  endif
+
+let @l = 'athis.app.log.info('
+let @c = 'aconsole.log('

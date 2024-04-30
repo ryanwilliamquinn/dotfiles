@@ -1,0 +1,245 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/rquinn/.oh-my-zsh"
+
+export PATH=$PATH:/Users/rquinn/pact/bin
+
+export GOPRIVATE=git.lab.smartsheet.com
+
+
+# PACT env vars
+export PACT_BROKER_BASE_URL=https://smartsheet.pactflow.io/
+export PACT_BROKER_HOST=smartsheet.pactflow.io
+export PACT_BROKER_TOKEN=-HyVKAuHA0tcV42loaEzBg
+export PACT_BROKER_AUTH_TOKEN=-HyVKAuHA0tcV42loaEzBg
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  #git
+  #kubectl
+  #asdf
+  #aws
+  #kube-ps1
+  #kubectx
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+#
+#RPS1='$(aws_prompt_info) <kubectx:$(kubectx_prompt_info)>'
+#RPS1='$(aws_prompt_info)'
+#RPS1='$(aws_prompt_info) $(kube_ps1)'
+#kubectx_mapping[arn:aws:eks:us-west-2:994937004716:cluster/spe-staging-us-west-2-v1-23]="%{$fg[yellow]%}Staging%{$reset_color%}"
+#kubectx_mapping[arn:aws:eks:us-east-1:952870946101:cluster/spe-prod-us-east-1-v1-23]="%{$bg[red]%}Prod%{$reset_color%}"
+#kubectx_mapping[arn:aws:eks:us-west-2:797694186952:cluster/spe-dev-us-west-2-v1-23]="%{$fg[green]%}Dev%{$reset_color%}"
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias .z="source ~/.zshrc"
+alias core="cd ~/repose/app-core"
+#alias pbcopy="xclip -selection clipboard"
+#alias pbpaste="xclip -selection clipboard -o"
+alias npmi="npm install"
+alias npmt="npm test"
+alias python='python3'
+alias unsetaws="unset AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY"
+alias scr="cd ~/git/service-conversation"
+alias sdr="cd ~/git/service-discussion"
+alias kc=kubectl
+alias docker=podman
+alias docker-compose=podman-compose
+alias temporalui="kubectl -n temporal port-forward deployment/temporal-web 26310:8080"
+
+# alias resetconnectors="/home/rquinn/repos/app-core/src/main/vagrant/helperscripts/docker/resetContainer.sh appconnectorstomcat && /home/rquinn/repos/app-core/src/main/vagrant/helperscripts/docker/resetContainer.sh batchconnectorstomcat"
+# alias connectapp="docker exec -it appconnectorstomcat bash"
+# alias connectbatch="docker exec -it batchconnectorstomcat bash"
+# alias pollwebhooks="mvn -P personal,app-container clean test -Dtest=com.smartsheet.service.integrationtests.WebhooksTesting#continuouslyReplayWebhooks -DfailIfNoTests=false"
+# alias restartconnectors="docker restart appconnectorstomcat && docker restart batchconnectorstomcat"
+# 
+# alias sourcegrootdev="export GROOT_AUTH=0844B3FC-72F4-4210-BBEF-FDB0A910D767 && GROOT_HOST=install.plugins.smart.ninja"
+# alias sourcegrootmars="export GROOT_AUTH=2BF70B49-935F-4205-B2CA-7DE806210B90 && GROOT_HOST=install.plugins.smart.ninja"
+# alias sourcegrootmars="export GROOT_AUTH=16F6C06B-995B-4D6C-AA19-5FE1684516F7 && GROOT_HOST=install.plugins.test.smartsheet.com"
+# alias sourcegrootprod="export GROOT_AUTH=E17916D6-ACEB-4289-A38E-BBE773312555 && GROOT_HOST=install.plugins.smartsheet.com"
+# 
+# alias grootdevlogs="smartsheet-cli plugin logs --host=install.plugins.smart.ninja --auth=0844B3FC-72F4-4210-BBEF-FDB0A910D767"
+# alias grootmarslogs="smartsheet-cli plugin logs --host=install.plugins.smart.ninja --auth=2BF70B49-935F-4205-B2CA-7DE806210B90"
+# alias groottestlogs="smartsheet-cli plugin logs --host=install.plugins.test.smartsheet.com --auth=16F6C06B-995B-4D6C-AA19-5FE1684516F7"
+# alias grootprodlogs="smartsheet-cli plugin logs --host=install.plugins.smartsheet.com --auth=E17916D6-ACEB-4289-A38E-BBE773312555"
+ 
+#alias cleanappcore="git ch -- dev2/web/javascript/app/npm-shrinkwrap.json dev2/web/javascript/legacyApp/npm-shrinkwrap.json dev2/web/package-lock.json"
+
+# gcc that includes advanced programming in the unix environment libraries
+#apuecompile() {
+#    local in=$(echo $1 | sed s_^\\./__g)
+#    echo $in
+#    local out=$(echo $in | cut -d '.' -f1)
+#    echo $out
+#    gcc -o $out $1 -I ./apue.3e/include -L ./apue.3e/lib/ -lapue
+#}
+
+# git paging configuration
+export LESS="-F -X $LESS"
+
+# export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/n"; 
+export PATH="$N_PREFIX/bin:$PATH"
+
+# dr racket
+export PATH="/home/rquinn/racket/bin:$PATH"
+
+# snap
+export PATH="$PATH:/snap/bin"
+
+export APPS_HOME=/opt/apps
+export PATH="$APPS_HOME/yarn/bin:$PATH"
+
+export JAVA_HOME=$APPS_HOME/java
+export PATH="$JAVA_HOME/bin:$PATH"
+fpath=(~/.zsh/completion $fpath)
+
+export MAVEN_HOME=/home/rquinn/apps/maven
+export PATH="$MAVEN_HOME/bin:$PATH"
+
+export GIT_ROOT=/Users/${USER}/git
+export GIT_APP_CORE=${GIT_ROOT}/app-core
+export COMPOSE_PROJECT_NAME=smartsheet
+export COMPOSE_FILE=${GIT_APP_CORE}/docker-compose.yml
+
+export PATH="$GIT_APP_CORE/src/main/build:$PATH"
+
+export AWS_DEFAULT_REGION=us-west-2
+
+# custom zsh functions
+fpath=(~/.zfunc $fpath)
+#autoload -Uz integrationtest
+#autoload -Uz runscheme
+# end custom zsh functions
+
+export PATH="/home/rquinn/.npm-global/bin:$PATH"
+
+#export PATH="/home/rquinn/.okta/bin:$PATH"
+#alias awsok='okta-aws smar_okta sts get-caller-identity'
+
+# OktaAWSCLI
+#if [ -f ~/.okta/bash_functions ]; then
+#    . ~/.okta/bash_functions
+#fi
+#
+## Application Engineering Test Admin
+#function okta_aetest_admin {
+#    export AWS_PROFILE=okta_aetest_admin
+#    OKTA_AWS_APP_URL=https://smartsheet.okta.com/home/amazon_aws/0oa7pehqx6AVUyhuF1t7/272 \
+#    OKTA_AWS_ROLE_TO_ASSUME=arn:aws:iam::240840654718:role/okta-AWS-app-eng-test-Admin \
+#    OKTA_STS_DURATION=3600 \
+#    okta-aws ${AWS_PROFILE} sts get-caller-identity
+#}
+
+unsetopt AUTO_CD
+export PATH=$PATH:$HOME/bin
+
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+
+# Include pip installs on path
+export PY_USER_BIN=$(python -c 'import site; print(site.USER_BASE + "/bin")')
+export PATH=$PY_USER_BIN:$PATH
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+alias spe-sandbox='aws sso login --profile spe-sandbox && `aws configure export-credentials --profile spe-sandbox --format env`'
+alias spe-dev='aws sso login --profile spe-dev && `aws configure export-credentials --profile spe-dev --format env`'
+alias spe-staging='aws sso login --profile spe-staging && `aws configure export-credentials --profile spe-staging --format env`'
+alias spe-prod='aws sso login --profile spe-prod && `aws configure export-credentials --profile spe-prod --format env`'
+alias spe-prod-eu='aws sso login --profile spe-prod-eu && `aws configure export-credentials --profile spe-prod-eu --format env`'
+alias gcs-staging='aws sso login --profile gcs-staging && `aws configure export-credentials --profile gcs-staging --format env`'
+
+alias usejava11='sudo ln -sfn /opt/apps/java11 /opt/apps/java && java -version'
+alias usejava17='sudo ln -sfn /opt/apps/java17 /opt/apps/java && java -version'
+alias usejava21='sudo ln -sfn /opt/apps/java21 /opt/apps/java && java -version'
